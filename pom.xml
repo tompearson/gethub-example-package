@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example.TappyPlay</groupId>
+    <artifactId>gethub-example-package</artifactId>
+    <version>1.0-MavenHelloWorld-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>16</maven.compiler.source>
+        <maven.compiler.target>16</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <!--Added-->
+    <distributionManagement> <!-- This section needs to be figured out for github integration -->
+        <!--  Setup maven-site-plugin site:stage here in distribution management.
+        This goal requires the site to already have been generated using the site goal, such as by calling mvn site.
+        -->
+        <repository>
+            <id>github</id>
+            <!--            <name>MyCo Internal Repository</name>-->
+            <!--            <url>https://github.com/tompearson/maven-project-demo/blob/master/distribution/</url>-->
+            <name>GitHub maven-project-demo Pages</name>
+            <url>scm:git:git@github.com/tompearson.github.io/maven-project-demo</url>
+
+        </repository>
+    </distributionManagement>
+    <build>
+        <!--        <pluginManagement>-->
+        <!--        The Lifecycle Maven jobs are each a plugin in the effective-pom file (there isn't one for some) -->
+        <!--        Lifecycle:install PASS  Creates the release C:\Users\Tom\.m2\repository\org\example\TappyPlay\MavenHelloWorld\1.0-MavenHelloWorld-SNAPSHOT
+                    Lifecycle:site PASS Creates the target/site structure
+                    Lifecycle:deploy FAIL needs <distributionManagement> fixed
+
+                    What is the difference between "mvn deploy" to a local repo and "mvn install"?
+                    https://stackoverflow.com/questions/207281/what-is-the-difference-between-mvn-deploy-to-a-local-repo-and-mvn-install
+        -->
+        <plugins>
+            <!-- Part of Maven - specified version explicitly for compatibility
+                 with the maven-project-info-reports-plugin 3.0.0-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.7.1</version>
+                <configuration>
+                    <!--  TO kill existing port 9000 listener:
+                     netstat -ano | findstr :9000
+                     taskkill /PID PID /F
+                     Use TCPview also -->
+                    <port>9000</port>
+                    <!--site.run-->
+                    <inputDirectory>${basedir}/target/site/</inputDirectory>
+                    <tempWebappDirectory>${basedir}/target/site/tempdir</tempWebappDirectory>
+                </configuration>
+                <!--            site:attach-descriptor PASS-->
+                <!--            site:deploy FAIL. Fix in <distribution management> -->
+                <!--            site:effective-site PASS-->
+                <!--            site:help PASS-->
+                <!--            site:jar PASS-->
+                <!--            site:site:run PASS - this hosts the html using Jetty on port 9000 -->
+                <!--            site:site PASS  - this creates all the html in site. run it before site:siterun  -->
+                <!--            site:stage FAIL-->
+                <!--            site:stage-deploy  FAIL. But does create
+                                C:\Users\Tom\.m2\repository\org\example\mavenhelloworld\
+                                MavenHelloWorld\MavenHelloWorld -->
+
+            </plugin>
+        </plugins>
+        <!--        </pluginManagement>-->
+    </build>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>3.0.0</version>
+                <!--                <reportSets>-->
+                <!--                    <reportSet>-->
+                <!--                        <reports>-->
+                <!--                            <report>dependencies</report>-->
+                <!--                            <report>team</report>-->
+                <!--                            <report>mailing-lists</report>-->
+                <!--                            <report>ci-management</report>-->
+                <!--                            <report>issue-management</report>-->
+                <!--                            <report>licenses</report>-->
+                <!--                            <report>scm</report>-->
+                <!--                        </reports>-->
+                <!--                    </reportSet>-->
+                <!--                </reportSets>-->
+            </plugin>
+        </plugins>
+    </reporting>
+</project>
