@@ -7,11 +7,12 @@
     <groupId>org.example.TappyPlay</groupId>
     <artifactId>gethub-example-package</artifactId>
     <version>1.0-MavenHelloWorld-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>16</maven.compiler.source>
-        <maven.compiler.target>16</maven.compiler.target>
+        <!--        <maven.compiler.source>16</maven.compiler.source>-->
+        <!--        <maven.compiler.target>16</maven.compiler.target>-->
     </properties>
 
     <dependencies>
@@ -29,11 +30,8 @@
         -->
         <repository>
             <id>github</id>
-            <!--            <name>MyCo Internal Repository</name>-->
-            <!--            <url>https://github.com/tompearson/maven-project-demo/blob/master/distribution/</url>-->
-            <name>GitHub maven-project-demo Pages</name>
-            <url>scm:git:git@github.com/tompearson.github.io/maven-project-demo</url>
-
+            <name>GitHub Tom Pearson Apache Maven Packages</name>
+            <url>https://github.com/tompearson/gethub-example-package</url>
         </repository>
     </distributionManagement>
     <build>
@@ -49,6 +47,15 @@
         <plugins>
             <!-- Part of Maven - specified version explicitly for compatibility
                  with the maven-project-info-reports-plugin 3.0.0-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
