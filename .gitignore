@@ -1,0 +1,15 @@
+######################
+######   Maven  ######
+######################
+# https://developpaper.com/question/what-files-do-you-need-to-ignore-when-submitting-the-maven-project-to-the-git-repository-what-should-be-the-standard-structure/
+/target/
+.idea/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+/.ignore
