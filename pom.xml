@@ -6,20 +6,20 @@
 
     <groupId>org.example.TappyPlay</groupId>
     <artifactId>gethub-example-package</artifactId>
-    <version>1.0-MavenHelloWorld-SNAPSHOT</version>
+    <version>1.0.1-MavenHelloWorld-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!--        <maven.compiler.source>16</maven.compiler.source>-->
-        <!--        <maven.compiler.target>16</maven.compiler.target>-->
+                <maven.compiler.source>1.8</maven.compiler.source>
+                <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -29,6 +29,7 @@
         This goal requires the site to already have been generated using the site goal, such as by calling mvn site.
         -->
         <repository>
+            <!-- Use the same settings here in settings.xml in .M2-->
             <id>github</id>
             <name>GitHub Tom Pearson Apache Maven Packages</name>
             <url>https://github.com/tompearson/gethub-example-package</url>
