@@ -27,7 +27,7 @@
     <distributionManagement> <!-- This section needs to be figured out for github integration -->
         <!--  Setup maven-site-plugin site:stage here in distribution management.
         This goal requires the site to already have been generated using the site goal, such as by calling mvn site.
-        -->
+         -->
         <repository>
             <!-- Use the same settings here in settings.xml in .M2-->
             <id>github</id>
